@@ -1,5 +1,7 @@
 package StudentPackage;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -10,8 +12,25 @@ public class StudentListTest {
 
     private Object assertEquals;
 
+    @BeforeEach
+    void setup(){
+        student = new Student("Tom","YAYA@gmail.ie");
+        myStudentlist = new StudentList();
+    }
+
+    @Test
+    void testAddStudent(){
+        myStudentlist.add(student);
+        assertEquals(1,myStudentlist.getSize());
+    }
+    @Test
+    void testFindByNameStudent(){
+        myStudentlist.add(student);
+        assertEquals(student.getName(),myStudentlist.findByName("Tom").getName());
+    }
 
 
+    @Disabled
     @Test
     void TestStudentList(){
         myStudentlist = new StudentList();
